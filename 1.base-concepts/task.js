@@ -14,9 +14,14 @@ function solveEquation(a, b, c) {
     arr = [rootOne, rootTwo]
   }
   return arr;
-  
+
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  
+  let mounthPercent = percent/100*12;
+  let body = amount - contribution;
+  let pay = body * (mounthPercent + (mounthPercent / (((1 + mounthPercent) ** countMonths) - 1)));
+  let fullPay = +(pay * countMonths).toFixed(2);
+  typeof(fullPay);
+  return fullPay;
 }
