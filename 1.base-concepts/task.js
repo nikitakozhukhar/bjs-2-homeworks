@@ -24,7 +24,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     result = false;
   } else {
     let mounthPercent = percent/(100*12);
-    let body; = amount - contribution;
+    let body = amount - contribution;
     let pay = body * (mounthPercent + (mounthPercent / (((1 + mounthPercent) ** countMonths) - 1)));
     result = +(pay * countMonths).toFixed(2);
   }
