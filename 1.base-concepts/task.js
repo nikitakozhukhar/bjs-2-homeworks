@@ -15,28 +15,19 @@ function solveEquation(a, b, c) {
   return arr;
 
 }
-console.log(solveEquation(1, 5, 4));
-console.log(solveEquation(1, 2, 1));
-console.log(solveEquation(1, 2, 10));
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   
-  let mounthPercent;
-  let body;
-  let pay;
   let result;
 
   if (isNaN(percent) || isNaN(contribution) || isNaN(amount)) {
     result = false;
   } else {
-    mounthPercent = percent/(100*12);
-    body = amount - contribution;
-    pay = body * (mounthPercent + (mounthPercent / (((1 + mounthPercent) ** countMonths) - 1)));
+    let mounthPercent = percent/(100*12);
+    let body; = amount - contribution;
+    let pay = body * (mounthPercent + (mounthPercent / (((1 + mounthPercent) ** countMonths) - 1)));
     result = +(pay * countMonths).toFixed(2);
   }
-  console.log(result);
   return result;
   
 }
-
-calculateTotalMortgage(20, 0, 'k10000', 36);
