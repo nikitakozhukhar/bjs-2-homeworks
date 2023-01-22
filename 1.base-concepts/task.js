@@ -3,7 +3,7 @@ function solveEquation(a, b, c) {
   let arr = [];
   let d = b**2 - 4*a*c;
   if (d < 0) {
-    arr = [];
+    arr;
   } else if ( d === 0) {
     let root = -b / (2 * a);
     arr = [root];
@@ -18,16 +18,13 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   
-  let result;
-
   if (isNaN(percent) || isNaN(contribution) || isNaN(amount)) {
-    result = false;
-  } else {
+    return false;
+  } 
     let mounthPercent = percent/(100*12);
     let body = amount - contribution;
     let pay = body * (mounthPercent + (mounthPercent / (((1 + mounthPercent) ** countMonths) - 1)));
-    result = +(pay * countMonths).toFixed(2);
-  }
-  return result;
+
+    return +(pay * countMonths).toFixed(2);
   
 }
