@@ -27,7 +27,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let result;
 
   if (isNaN(percent) || isNaN(contribution) || isNaN(amount)) {
-    result = 'false';
+    result = false;
   } else {
     mounthPercent = percent/(100*12);
     body = amount - contribution;
