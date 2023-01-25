@@ -93,7 +93,6 @@ function makeWork (arrOfArr, func) {
     if (resultFunc > maxWorkerResult) {
       maxWorkerResult = resultFunc;
     }
-    console.log(maxWorkerResult);
   }
   return maxWorkerResult;
 }
