@@ -10,26 +10,20 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-
   if (this.marks) {
-    for (let elem of marks) {
-      this.marks.push(elem);
-    }
-  } 
+    this.marks.push(...marks);
+  }
 }
 
 Student.prototype.getAverage = function () {
-	let marks = this.marks;
-  if (marks && marks.length > 0) {
-    let avg;
-    marks.reduce((acc, item, index, arr) => {
+  if (this.marks) {
+    return this.marks.reduce((acc, item, index, arr) => {
       acc += item;
       if (index === arr.length - 1) {
-        return avg = acc / arr.length
+        return acc / arr.length
       };
       return acc
     }, 0);
-    return avg
   } else {
     return 0
   }
@@ -38,8 +32,8 @@ Student.prototype.getAverage = function () {
 Student.prototype.exclude = function (reason) {
 	
   if (reason) {
-    this.subject = undefined;
-    this.marks = undefined;
+    delete this.subject;
+    delete this.marks;
     this.excluded = reason;
   }
 }
