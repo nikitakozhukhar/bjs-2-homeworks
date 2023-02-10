@@ -152,9 +152,34 @@ class Student {
 	}
 
 	getAverage() {
+		console.log(Object.keys(this.marks));
+		console.log([...Object.values(this.marks)])
+
+		let arr = [...Object.values(this.marks)];
+		for (let i = 0; i <= arr.length - 1; i++) {
+			let avgOfArr;
+			arr[i].reduce((acc, item, index, arr) => {
+				acc += item;
+				if (index === arr.length - 1) {
+					return acc / arr.length
+				}
+				return acc
+			}, 0);
+			console.log(acc)
+		}
 		
 	}
 }
+
+let student = new Student("Иван Петров");
+student.addMark(3, "математика");
+student.addMark(5, "математика");
+student.addMark(3, "математика");
+student.addMark(5, "физика");
+student.addMark(4, "физика");
+student.addMark(3, "геометрия");
+student.addMark(4, "геометрия");
+student.getAverage();
 //   Student.prototype.setSubject = function (subjectName) {
 // 	this.subject = subjectName;
 //   }
