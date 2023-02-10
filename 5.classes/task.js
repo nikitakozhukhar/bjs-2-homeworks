@@ -81,7 +81,7 @@ class Library {
 		for (let i = 0; i < this.books.length; i++) {
 			const {type: name, value: findValue} = Book;	
 		console.log(name, findValue)
-			debugger;
+			// debugger;
 
 			let arrOfKeys = Object.keys(this.books[i]);
 			let arrOfValues = Object.values(this.books[i]);
@@ -105,52 +105,85 @@ class Library {
 	
 }
 
-const library = new Library("Библиотека имени Ленина");
-library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
-library.addBook(new Magazine("Мурзилка", 1924, 60));
+// const library = new Library("Библиотека имени Ленина");
+// library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+// library.addBook(new Magazine("Мурзилка", 1924, 60));
 
-console.log(library.findBookBy("name", "Властелин колец")); //null
-console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
+// console.log(library.findBookBy("name", "Властелин колец")); //null
+// console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
 
 
 /*Задача 3*/
 
-function Student(name, gender, age) {
-	this.name = name;
-	this.gender = gender;
-	this.age = age;
-	this.marks = [];
-  }
-  
-  Student.prototype.setSubject = function (subjectName) {
-	this.subject = subjectName;
-  }
-  
-  Student.prototype.addMarks = function (...marks) {
-	if (this.marks) {
-	  this.marks.push(...marks);
+class Student {
+	constructor(name, gender, age) {
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.marks = {};
 	}
-  }
-  
-  Student.prototype.getAverage = function () {
-	if (this.marks) {
-	  return this.marks.reduce((acc, item, index, arr) => {
-		acc += item;
-		if (index === arr.length - 1) {
-		  return acc / arr.length
-		};
-		return acc
-	  }, 0);
-	} else {
-	  return 0
+
+	addMark(value, subject) {
+		if (value >= 2 && value <= 5) {
+			if (!this.marks[subject]) {
+				this.marks[subject] = [value];
+				console.log(this.marks);
+			} else {
+				this.marks[subject].push(value);
+			}
+			
+		} else {
+			return this.marks
+		}
+    }
+
+	getAverageBySubject(subject) {
+		if (!this.marks[subject]) {
+			return 0
+		} else {
+			return this.marks[subject].reduce((acc, item, index, arr) => {
+				acc += item;
+				if (index === arr.length - 1) {
+					return acc / arr.length
+				}
+				return acc
+			}, 0)
+		}
 	}
-  }
+
+	getAverage() {
+		
+	}
+}
+//   Student.prototype.setSubject = function (subjectName) {
+// 	this.subject = subjectName;
+//   }
+
+//   Student.prototype.addMarks = function (...marks) {
+// 	if (this.marks) {
+// 	  this.marks.push(...marks);
+// 	}
+//   }
   
-  Student.prototype.exclude = function (reason) {
+//   Student.prototype.getAverage = function () {
+// 	if (this.marks) {
+// 	  return this.marks.reduce((acc, item, index, arr) => {
+// 		acc += item;
+// 		if (index === arr.length - 1) {
+// 		  return acc / arr.length
+// 		};
+// 		return acc
+// 	  }, 0);
+// 	} else {
+// 	  return 0
+// 	}
+//   }
+  
+//   Student.prototype.exclude = function (reason) {
 	  
-	if (reason) {
-	  delete this.subject;
-	  delete this.marks;
-	  this.excluded = reason;
-	}
-  }
+// 	if (reason) {
+// 	  delete this.subject;
+// 	  delete this.marks;
+// 	  this.excluded = reason;
+// 	}
+//   }
