@@ -127,7 +127,7 @@ class Student {
 		if (value >= 2 && value <= 5) {
 			if (!this.marks[subject]) {
 				this.marks[subject] = [value];
-				console.log(this.marks);
+				// console.log(this.marks);
 			} else {
 				this.marks[subject].push(value);
 			}
@@ -152,20 +152,26 @@ class Student {
 	}
 
 	getAverage() {
-		console.log(Object.keys(this.marks));
-		console.log([...Object.values(this.marks)])
+		let arrOfKeys = Object.keys(this.marks);
+		let arrOfValues = [...Object.values(this.marks)];
+		console.log(arrOfKeys);
+		console.log(arrOfValues);
 
-		let arr = [...Object.values(this.marks)];
-		for (let i = 0; i <= arr.length - 1; i++) {
-			let avgOfArr;
-			arr[i].reduce((acc, item, index, arr) => {
+		for (let i = 0; i <= arrOfValues.length - 1; i++) {
+			let arrOfAvg
+			arrOfValues[i].reduce((acc, item, index, arr) => {
+				console.log(arrOfAvg.push(acc));
 				acc += item;
 				if (index === arr.length - 1) {
 					return acc / arr.length
 				}
-				return acc
+				// console.log(avg)
+				
+				return acc;
+				
 			}, 0);
-			console.log(acc)
+			
+			// console.log(avg)
 		}
 		
 	}
