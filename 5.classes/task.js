@@ -72,15 +72,21 @@ class Library {
 	}
 	addBook(book){
 		this.books.push(book);
-		// console.log(this.books);
+		// console.log(this);
 	}
 	findBookBy(type, value){
-		// console.log(this.books[i]["type"]);
+		// library.books.find(item => item.type === 'novel')
+		const filteredByType = this.books.find((item) => {
+			if (type === item.type) {
+				console.log('код работает')
+			}
+		}
+		);
+		console.log(filteredByType)
+		// console.log(this.books);
 		// const {name: , releaseDate, pagesCount} = this.book;
 		// console.log(author, name, releaseDate, pagesCount);
-		for (let i = 0; i < this.books.length; i++) {
-			const {type: name, value: findValue} = Book;	
-		console.log(name, findValue)
+		/*for (let i = 0; i < this.books.length; i++) {
 			// debugger;
 
 			let arrOfKeys = Object.keys(this.books[i]);
@@ -94,7 +100,7 @@ class Library {
 				return null
 			}
 			
-		}
+		}*/
 	}
 	giveBookByName(bookName) {
 		// for (let i = 0; i <= this.books.length; i++) {
@@ -104,13 +110,32 @@ class Library {
 	}
 	
 }
-
+const library = new Library("Библиотека имени Ленина");
+library.addBook(
+	new DetectiveBook(
+	  "Артур Конан Дойл",
+	  "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+	  2019,
+	  1008
+	)
+  );
+  library.addBook(
+	new FantasticBook(
+	  "Аркадий и Борис Стругацкие",
+	  "Пикник на обочине",
+	  1972,
+	  168
+	)
+  );
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+// addBook();
 // const library = new Library("Библиотека имени Ленина");
 // library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
 // library.addBook(new Magazine("Мурзилка", 1924, 60));
 
-// console.log(library.findBookBy("name", "Властелин колец")); //null
-// console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
+console.log(library.findBookBy("name", "Властелин колец")); //null
+console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
 
 
 /*Задача 3*/
@@ -153,27 +178,21 @@ class Student {
 
 	getAverage() {
 		let arrOfKeys = Object.keys(this.marks);
-		let arrOfValues = [...Object.values(this.marks)];
-		console.log(arrOfKeys);
-		console.log(arrOfValues);
-
-		for (let i = 0; i <= arrOfValues.length - 1; i++) {
-			let arrOfAvg
+		let arrOfValues = Object.values(this.marks);
+		// console.log(this);
+		// console.log(arrOfKeys);
+		// console.log(arrOfValues);
+		//  let arr = this.marks;
+		 for (let i = 0; i <= arrOfValues.length - 1; i++) {
+			
 			arrOfValues[i].reduce((acc, item, index, arr) => {
-				console.log(arrOfAvg.push(acc));
 				acc += item;
 				if (index === arr.length - 1) {
 					return acc / arr.length
 				}
-				// console.log(avg)
-				
 				return acc;
-				
 			}, 0);
-			
-			// console.log(avg)
 		}
-		
 	}
 }
 
