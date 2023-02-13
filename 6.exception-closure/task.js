@@ -9,11 +9,16 @@ function parseCount(parseValue) {
 }
 
 function validateCount(value) {
-	let error = new Error("Невалидное значение") 
-	if (isNaN(parseCount(value))) {
-		return console.log(error);
+	let error = new Error("Невалидное значение")
+	try {
+		if (isNaN(parseCount(value))) {
+			return console.log(error);
+		}
+		return parseCount(value);
 	}
-	return parseCount(value);
+	catch (error) {
+		return error
+	}
 }
 
 /*Задача № 2*/
@@ -24,14 +29,14 @@ class Triangle {
 		this.secondSide = secondSide;
 		this.thirdSide = thirdSide;
 		if (
-			(firstSide + secondSide) < thirdSide || 
-			(firstSide + thirdSide) < secondSide || 
+			(firstSide + secondSide) < thirdSide ||
+			(firstSide + thirdSide) < secondSide ||
 			(secondSide + thirdSide) < firstSide) {
 			throw new Error("Треугольник с такими сторонами не существует")
 		}
 	}
 
-	get perimeter () {
+	get perimeter() {
 		return this.firstSide + this.secondSide + this.thirdSide;
 	}
 
@@ -43,7 +48,7 @@ class Triangle {
 	}
 }
 
-	function  getTriangle (firstSide, secondSide, thirdSide) {
-		
-		return new Triangle(firstSide, secondSide, thirdSide);
-	}
+function getTriangle(firstSide, secondSide, thirdSide) {
+
+	return new Triangle(firstSide, secondSide, thirdSide);
+}
