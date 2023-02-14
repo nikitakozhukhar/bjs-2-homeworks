@@ -154,26 +154,31 @@ class Student {
 	getAverage() {
 		let arrOfKeys = Object.keys(this.marks);
 		let arrOfValues = [...Object.values(this.marks)];
-		console.log(arrOfKeys);
+		let arr = this.marks.every(item => item.reduce((acc, item, index, arr) => {
+			acc += item;
+			if (index === arr.length - 1) {
+				return acc / arr.length
+			}
+			// console.log(avg)
+			return acc;
+		}, 0));
+		console.log(arr)
+
+		console.log(this);
 		console.log(arrOfValues);
 
 		for (let i = 0; i <= arrOfValues.length - 1; i++) {
-			let arrOfAvg
-			arrOfValues[i].reduce((acc, item, index, arr) => {
-				console.log(arrOfAvg.push(acc));
+				arrOfValues[i].reduce((acc, item, index, arr) => {
 				acc += item;
 				if (index === arr.length - 1) {
 					return acc / arr.length
 				}
 				// console.log(avg)
-				
 				return acc;
-				
 			}, 0);
 			
 			// console.log(avg)
 		}
-		
 	}
 }
 
