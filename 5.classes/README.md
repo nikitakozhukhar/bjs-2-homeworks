@@ -112,7 +112,7 @@ library.addBook(
 library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 
- console.log(library.findBookBy("name", "Властелин колец")); //null
+console.log(library.findBookBy("name", "Властелин колец")); //null
 console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
 
  console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
