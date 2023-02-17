@@ -49,15 +49,20 @@ class Triangle {
 }
 
 function getTriangle(firstSide, secondSide, thirdSide) {
-	return {
-		Triangle(firstSide, secondSide, thirdSide){
-			get area() {
-				return "Ошибка! Треугольник не существует"
+	// const triangle = new Triangle (firstSide, secondSide, thirdSide);
+	if (
+		(firstSide + secondSide) < thirdSide ||
+		(firstSide + thirdSide) < secondSide ||
+		(secondSide + thirdSide) < firstSide) {
+			return {
+				get area() {
+					return "Ошибка! Треугольник не существует"	
+				},
+				get perimeter() {
+					return "Ошибка! Треугольник не существует"
+				}
 			}
-			get perimeter() {
-				return "Ошибка! Треугольник не существует"
-			}
-		}
-		
-}
+	} else {
+		return new Triangle (firstSide, secondSide, thirdSide);
+	}
 }
