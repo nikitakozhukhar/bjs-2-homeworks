@@ -70,9 +70,13 @@ class Library {
 		this.name = name;
 		this.books = [];
 	}
+
 	addBook(book){
-		this.books.push(book);
+		if (book.state > 30) {
+			this.books.push(book);
+		}
 	}
+
 	findBookBy(type, value){
 		return this.books.find((item) => item[type] == value) || null;
 	}
