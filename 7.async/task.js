@@ -37,7 +37,7 @@
     let minutes = addLeadingZero(date.getMinutes());
     let currentTime = `${hour}:${minutes}`;
     function addLeadingZero (t) {
-        return (t < 10) ? 0 + t : t;
+        return (t < 10) ? '0' + t : t;
       }
     return currentTime
   }
@@ -45,6 +45,9 @@
   start () {
     if (!intervalId) {
       return
+    } else {
+      let inteval = setInterval(checkStart, 1000);
+      this.intervalId = inteval;
     }
   }
     checkStart () {
@@ -55,14 +58,20 @@
         } 
       })
     }
-    // setInterval(() => {this.alarmCollection.forEach(item => {
-    //   if (item === currentTime) {
-    //     canCall = false;
-    //     clock.callback();
-    //   } 
-    // })
-    // }, 1000);
 
+   stop() {
+    clearInterval(inteval);
+    this.intervalId = null;
+   }
+
+   resetAllCalls () {
+    this.alarmCollection.forEach(item => item.canCall = true)
+   }
+
+   clearAlarms() {
+    stop();
+    this.alarmCollection = [];
+   }
 }
 
 
