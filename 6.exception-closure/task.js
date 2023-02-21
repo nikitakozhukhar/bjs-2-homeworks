@@ -1,19 +1,16 @@
 ﻿/*Задача № 1*/
 
 function parseCount(parseValue) {
-	if (isNaN(Number.parseFloat(parseValue))) {
+	let parse = Number.parseFloat(parseValue)
+	if (isNaN(parse)) {
 		throw new Error("Невалидное значение");
 	} else {
-		return Number.parseFloat(parseValue);
+		return parse;
 	}
 }
 
 function validateCount(value) {
-	let error = new Error("Невалидное значение")
 	try {
-		if (isNaN(parseCount(value))) {
-			return console.log(error);
-		}
 		return parseCount(value);
 	}
 	catch (error) {
@@ -49,12 +46,19 @@ class Triangle {
 }
 
 function getTriangle(firstSide, secondSide, thirdSide) {
-	let error = new Error("Ошибка! Треугольник не существует");
-	try {
-		return new Triangle(firstSide, secondSide, thirdSide)
+	if (
+		(firstSide + secondSide) < thirdSide ||
+		(firstSide + thirdSide) < secondSide ||
+		(secondSide + thirdSide) < firstSide) {
+			return {
+				get area() {
+					return "Ошибка! Треугольник не существует"	
+				},
+				get perimeter() {
+					return "Ошибка! Треугольник не существует"
+				}
+			}
+	} else {
+		return new Triangle (firstSide, secondSide, thirdSide);
 	}
-	catch (error) {
-		console.log("error")
-	}
-	
 }
