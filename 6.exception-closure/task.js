@@ -49,6 +49,12 @@ class Triangle {
 }
 
 function getTriangle(firstSide, secondSide, thirdSide) {
-
-	return new Triangle(firstSide, secondSide, thirdSide);
+	let error = new Error("Ошибка! Треугольник не существует");
+	try {
+		return new Triangle(firstSide, secondSide, thirdSide)
+	}
+	catch (error) {
+		console.log("error")
+	}
+	
 }
