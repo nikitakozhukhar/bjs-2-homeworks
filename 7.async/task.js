@@ -26,8 +26,10 @@
     this.alarmCollection.push(obj)
   }
   removeClock (time) {
-    let timeIndex = this.alarmCollection.find(item => item === time);
+    let timeIndex = this.alarmCollection.findIndex(item => item['time'] == time);
+    // console.log(clock.alarmCollection.length);
     this.alarmCollection.splice(timeIndex, 1);
+    // console.log(clock.alarmCollection.length)
   }
 
   getCurrentFormattedTime () {
@@ -43,24 +45,26 @@
   }
 
   start () {
-    if (!intervalId) {
+    if (!this.intervalId) {
       return
     } else {
-      let inteval = setInterval(checkStart, 1000);
-      this.intervalId = inteval;
+      let interval = setInterval(checkStart, 1000);
+      this.intervalId = interval;
     }
+    console.log(interval)
   }
     checkStart () {
-      this.alarmCollection.forEach(item => {
-        if (item === currentTime) {
+      let flafToCall = this.alarmCollection.forEach(item => {
+        if (item['time'] === currentTime) {
           canCall = false;
           clock.callback();
+          this.intervalId = flafToCall;
         } 
       })
     }
 
    stop() {
-    clearInterval(inteval);
+    clearInterval(this.interval);
     this.intervalId = null;
    }
 
@@ -74,7 +78,17 @@
    }
 }
 
-
+let clock = new AlarmClock();
+const callback = f => f;
+clock.addClock("16:45", callback);
+clock.addClock("16:45", callback);
+clock.addClock("16:45", callback);
+clock.addClock("16:46", callback);
+// console.log(`интервал: ${clock.intervalId}`);
+// clock.addClock("16:45", f => f);
+// clock.start();
+// console.log(clock.alarmCollection);
+// clock.stop();
 /*
  // let date = new Date();
     // time = `${hour}: ${minutes}`;
