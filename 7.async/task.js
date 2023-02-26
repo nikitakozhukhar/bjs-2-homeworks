@@ -26,9 +26,10 @@
     this.alarmCollection.push(obj)
   }
   removeClock (time) {
-    let timeIndex = this.alarmCollection.findIndex(item => item['time'] == time);
-    // console.log(clock.alarmCollection.length);
-    this.alarmCollection.splice(timeIndex, 1);
+    console.log(clock.alarmCollection.length);
+   return this.alarmCollection.filter(item => item['time'] !== time);
+    
+    // this.alarmCollection.splice(timeIndex, 1);
     // console.log(clock.alarmCollection.length)
   }
 
