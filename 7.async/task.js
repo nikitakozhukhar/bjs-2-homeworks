@@ -48,21 +48,28 @@
   start () {
     if (!this.intervalId) {
       return
-    } else {
-      let interval = setInterval(checkStart, 1000);
-      this.intervalId = interval;
-    }
-    console.log(interval)
-  }
-    checkStart () {
-      let flafToCall = this.alarmCollection.forEach(item => {
-        if (item['time'] === currentTime) {
+    } 
+    function check () {
+      this.alarmCollection.forEach(item => {
+        if (item['time'] === getCurrentFormattedTime () && canCall == true) {
           canCall = false;
           clock.callback();
-          this.intervalId = flafToCall;
         } 
       })
     }
+      let interval = setInterval(check, 1000);
+      this.intervalId = interval;
+  }
+    /*checkStart () {
+      let flafToCall = this.alarmCollection.forEach(item => {
+        if (item['time'] === getCurrentFormattedTime () && canCall == true) {
+          canCall = false;
+          clock.callback();
+          // this.intervalId = flafToCall;
+        } 
+      })
+      
+    }*/
 
    stop() {
     clearInterval(this.interval);
