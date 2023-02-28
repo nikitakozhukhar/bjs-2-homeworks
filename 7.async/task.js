@@ -46,30 +46,20 @@
   }
 
   start () {
-    if (!this.intervalId) {
+    if (this.intervalId) {
       return
     } 
-    function check () {
+    const check = () => {
       this.alarmCollection.forEach(item => {
-        if (item['time'] === getCurrentFormattedTime () && canCall == true) {
-          canCall = false;
-          clock.callback();
+        if (item.time === this.getCurrentFormattedTime () && item.canCall) {
+          item.canCall = false;
+          item.callback();
         } 
       })
     }
-      let interval = setInterval(check, 1000);
-      this.intervalId = interval;
+      this.intervalId = setInterval(check, 1000);
   }
-    /*checkStart () {
-      let flafToCall = this.alarmCollection.forEach(item => {
-        if (item['time'] === getCurrentFormattedTime () && canCall == true) {
-          canCall = false;
-          clock.callback();
-          // this.intervalId = flafToCall;
-        } 
-      })
-      
-    }*/
+    
 
    stop() {
     clearInterval(this.interval);
