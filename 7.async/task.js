@@ -23,7 +23,7 @@
   removeClock (time) {
     console.log(this.alarmCollection);
     console.log(this.alarmCollection.length);
-    return this.alarmCollection.findIndex(item => item.time === time);
+    return this.alarmCollection.filter(item => item.time === time);
   }
 
   getCurrentFormattedTime () {
