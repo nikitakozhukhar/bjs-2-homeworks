@@ -44,7 +44,7 @@
     } 
     const check = () => {
       this.alarmCollection.forEach(item => {
-        if (item.time === this.getCurrentFormattedTime () && item.canCall) {
+        if (item.time === this.getCurrentFormattedTime() && item.canCall) {
           item.canCall = false;
           item.callback();
         } 
