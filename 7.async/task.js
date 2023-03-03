@@ -1,8 +1,3 @@
-//git add -A
-//git commit -m ""
-//git pull
-//git push -u origin bjs-53
-  
   class AlarmClock {
   constructor() {
     this.alarmCollection = [];
@@ -26,11 +21,9 @@
     this.alarmCollection.push(obj)
   }
   removeClock (time) {
-    console.log(clock.alarmCollection.length);
-   return this.alarmCollection.filter(item => item['time'] !== time);
-    
-    // this.alarmCollection.splice(timeIndex, 1);
-    // console.log(clock.alarmCollection.length)
+    console.log(this.alarmCollection);
+    console.log(this.alarmCollection.length);
+    return this.alarmCollection.findIndex(item => item.time === time);
   }
 
   getCurrentFormattedTime () {
@@ -76,27 +69,3 @@
    }
 }
 
-let clock = new AlarmClock();
-const callback = f => f;
-clock.addClock("16:45", callback);
-clock.addClock("16:45", callback);
-clock.addClock("16:45", callback);
-clock.addClock("16:46", callback);
-// console.log(`интервал: ${clock.intervalId}`);
-// clock.addClock("16:45", f => f);
-// clock.start();
-// console.log(clock.alarmCollection);
-// clock.stop();
-/*
- // let date = new Date();
-    // time = `${hour}: ${minutes}`;
-    // let hour = addLeadingZero(date.getHours());
-    // let minutes = addLeadingZero(date.getMinutes());
-    // console.log(time);
-    // console.log(callback);
-
-    // function addLeadingZero (t) {
-    //   return (t < 10) ? 0 + t : t;
-    // }
-
-*/
