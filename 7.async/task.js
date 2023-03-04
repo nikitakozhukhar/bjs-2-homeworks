@@ -2,7 +2,6 @@
   constructor() {
     this.alarmCollection = [];
     this.intervalId = null;
-    
   }
   
   addClock (time, callback) {
@@ -20,10 +19,9 @@
     }
     this.alarmCollection.push(obj)
   }
+  
   removeClock (time) {
-    console.log(this.alarmCollection);
-    console.log(this.alarmCollection.length);
-    return this.alarmCollection.filter(item => item.time === time);
+    return this.alarmCollection = this.alarmCollection.filter(item => item.time !== time);
   }
 
   getCurrentFormattedTime () {
@@ -53,7 +51,6 @@
       this.intervalId = setInterval(check, 1000);
   }
     
-
    stop() {
     clearInterval(this.interval);
     this.intervalId = null;
@@ -64,7 +61,7 @@
    }
 
    clearAlarms() {
-    stop();
+    this.stop();
     this.alarmCollection = [];
    }
 }
