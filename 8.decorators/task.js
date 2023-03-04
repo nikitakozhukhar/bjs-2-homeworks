@@ -14,10 +14,11 @@ function cachingDecoratorNew(func) {
   }
 }
 
-sum = (...args) => args.reduce((acc, item) => acc + item, 0);
+// sum = (...args) => args.reduce((acc, item) => acc + item, 0);
 
-const cashedSum = cachingDecoratorNew(sum);
-debugger;
+// const cashedSum = cachingDecoratorNew(sum);
+// debugger;
+
 //Задача № 2
 function debounceDecoratorNew(func, delay) {
   
@@ -30,11 +31,16 @@ function debounceDecoratorNew(func, delay) {
 	wrapper.allCount = 0;
   
 	function wrapper(...args) {
-	  
+		wrapper.history.push(args)
+		return func(...args)
 	}
-  
+	wrapper.history = [];
+	console.log(a, b)
 	return wrapper;
   }
+//   const sum = (a, b) => a + b;
+
+//   let spy = debounceDecoratorNew(sum)
   
   /*module.exports = {
 	debounceDecoratorNew, 
