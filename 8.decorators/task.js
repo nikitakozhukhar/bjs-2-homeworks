@@ -1,17 +1,23 @@
 //Задача № 1
 function cachingDecoratorNew(func) {
-  let cash = {};
-
-  return function(...args) {
-		const hash = md5(args);
+  let cash = [];
+	console.log(cash);
+	console.log(cash.hash)
+   
+	function wrapper(...args) {
+		const hash = (args);
 		if (hash in cash) {
+			console.log(`Из кэша ${hash}`);
 			return `Из кэша: ${cash[hash]}`
 		}
 
 		const result = func(...args);
 		cash[hash] = result;
-		return `Вычмсляем: ${result}`;
+		console.log(`Вычисляем ${result}`);
+		return `Вычисляем: ${result}`;
   }
+	
+	return wrapper
 }
 
 //Задача № 2
